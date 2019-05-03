@@ -7,34 +7,7 @@ Public Class StartPlay
     Dim wmicancion As New miscanciones
 
     Private Sub StartPlay_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Dim listfiles() As String
-        '''Dim path() As String
-        'Dim n As Integer
 
-        'listfiles = Directory.GetFiles("C:\Users\Daniel\Videos", "*.mp4")
-
-        'For i = 0 To listfiles.Length - 1 Step 1
-        '    path = listfiles(i).Split("\")
-        '    n = path.Length() - 1
-        '    'ListBox1.Items.Add(path(n))
-
-        '    'indica la cancion selecionada
-        '    ' wabrir = OpenFileDialog1.FileName
-
-        '    'reproduce la cancion selecionada
-        '    'AxWindowsMediaPlayer1.URL = wabrir
-        '    '///////////////////////////////////////////////
-        '    wfile = New IO.FileInfo(listfiles(i))
-        '    wmicancion.pruta = wabrir
-        '    wabrir = wfile.Name
-        '    wmicancion.pnombre = wabrir
-
-
-        '    Me.ListBox1.Items.Add(wabrir)
-
-        '    wmisansiones.Add(wmicancion)
-
-        'Next
     End Sub
 
     'Boto para iniciar o Pausar la reproduccion
