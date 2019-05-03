@@ -1,13 +1,15 @@
 ﻿Imports System.IO
+'Imports StarPlay.DB_Conexion
 
 Public Class StartPlay
     Dim wmisansiones As New ArrayList
     Dim wabrir As String
     Dim wfile As IO.FileInfo
     Dim wmicancion As New miscanciones
+    Dim ConexionDB As New DB_Conexion
 
     Private Sub StartPlay_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
+        ConexionDB.conectar()
     End Sub
 
     'Boto para iniciar o Pausar la reproduccion
@@ -109,6 +111,7 @@ Public Class StartPlay
         For Each wcancion As miscanciones In wmisansiones
             If wcancion.pnombre = warchivo Then
                 Me.AxWindowsMediaPlayer1.URL = wcancion.pruta
+
             End If
         Next
         Timer2.Start()
