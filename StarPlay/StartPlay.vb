@@ -1,15 +1,41 @@
 ﻿Imports System.IO
-'Imports StarPlay.DB_Conexion
 
 Public Class StartPlay
     Dim wmisansiones As New ArrayList
     Dim wabrir As String
+    Dim mensajeError As String
     Dim wfile As IO.FileInfo
     Dim wmicancion As New miscanciones
     Dim ConexionDB As New DB_Conexion
+    Dim tabla As DataTable
 
+    'Acciones a realizar cuando se carga el programa al abrirse
     Private Sub StartPlay_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        ConexionDB.conectar()
+        Dim nombre, ruta As String
+        Try
+
+            ConexionDB.conectar("StartPlay_DB")
+
+            tabla = ConexionDB.Listar_canciones()
+
+            'Recorre la lista de canciones para agregarlas al ListBox
+            For Each linea As DataRow In tabla.Rows()
+                nombre = linea.Item(0)
+                ruta = linea.Item(1)
+
+                wmicancion.pruta = ruta
+                wmicancion.pnombre = nombre
+
+
+                Me.ListBox1.Items.Add(nombre)
+
+                wmisansiones.Add(wmicancion)
+                wmicancion = New miscanciones
+            Next
+        Catch ex As Exception
+            mensajeError = ex.Message
+        End Try
+
     End Sub
 
     'Boto para iniciar o Pausar la reproduccion
